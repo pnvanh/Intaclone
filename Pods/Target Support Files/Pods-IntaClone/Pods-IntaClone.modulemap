@@ -1,0 +1,6 @@
+framework module Pods_IntaClone {
+  umbrella header "Pods-IntaClone-umbrella.h"
+
+  export *
+  module * { export * }
+}

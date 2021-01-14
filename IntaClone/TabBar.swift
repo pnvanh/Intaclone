@@ -21,6 +21,9 @@ struct TabBar: View {
                 ProfileContent()
                     .tag("Profile")
             }
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationTitle("")
+            .navigationBarHidden(true)
             HStack(spacing: 0){
                 TabButton(title: "Home", image: "home", selected: $current)
                 Spacer(minLength: 0)

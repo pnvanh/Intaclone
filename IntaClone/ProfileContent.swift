@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileContent: View {
+    @State var show = false
     var body: some View {
         NavigationView {
             VStack {
@@ -15,6 +16,21 @@ struct ProfileContent: View {
                     Rectangle().fill(Color("Color")).frame(width: UIScreen.main.bounds.width, height: 40, alignment: .center)
                     HStack {
                         Text("Profile").font(Font.custom("Lobster-Regular", size: 28)).padding(.leading)
+                        Spacer()
+                        Button(action: {
+                            self.show.toggle()
+                        }, label: {
+                            Text("Add")
+                                .foregroundColor(.white)
+                                .padding(.vertical, 5)
+                                .frame(width: 60)
+                        })
+                        .background(Color("Bluesky"))
+                        .clipShape(Capsule())
+                        .padding(.horizontal)
+                        .sheet(isPresented: $show, content: {
+                            AddView.init()
+                        })
                     }
                 }
                 ProfileView()
@@ -46,30 +62,56 @@ struct ProfileView: View {
                                     Image("avata")
                                         .resizable()
                                         .clipShape(Circle())
-                                        .frame(width: 120, height: 120, alignment: .center).padding(.top, -60)
+                                        .frame(width: 100, height: 100, alignment: .center).padding(.top, -50)
                                     Spacer()
                                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                                         Text("Edit profile")
                                             .frame(minWidth: 0, maxWidth: .infinity)
-                                            .foregroundColor(Color("Gray"))
+                                            .foregroundColor(Color("Color2"))
                                     })
-                                    .frame(width: reader.size.width - 150, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Gray"), lineWidth: 2))
+                                    .frame(width: reader.size.width - 130, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Color2"), lineWidth: 2))
                                         .cornerRadius(10)
                                     Spacer()
+                                }.padding(.horizontal)
+                                .frame(width: reader.size.width)
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text("Phan Ngoc Viet Anh")
+                                        .font(.system(size: 20))
+                                        .lineLimit(1)
+                                    Text("@pnvanh")
+                                        .font(.system(size: 18))
+                                        .lineLimit(1)
+                                    Text("Đẹp trai thanh lịch vô địch vũ trụ")
+                                        .font(.system(size: 18))
+                                        .lineLimit(1)
+                                }.padding(.horizontal)
+                                HStack(spacing: 0) {
+                                    NavigationLink(
+                                        destination: SearchList(text: "", nameTitle: "Following")) {
+                                        VStack{
+                                            Text("182")
+                                                .font(.system(size: 20))
+                                                .lineLimit(1)
+                                            Text("Following")
+                                                .font(.system(size: 18))
+                                                .lineLimit(1)
+                                        }.frame(width: reader.size.width / 2)
+                                    }
+                                    NavigationLink(
+                                        destination: SearchList(text: "", nameTitle: "Followers")) {
+                                        VStack{
+                                            Text("18")
+                                                .font(.system(size: 20))
+                                                .lineLimit(1)
+                                            Text("Followers")
+                                                .font(.system(size: 18))
+                                                .lineLimit(1)
+                                        }.frame(width: reader.size.width / 2)
+                                    }
+
                                 }.frame(width: reader.size.width)
-                                Text("Phan Ngoc Viet Anh")
-                                    .font(.system(size: 28))
-                                    .lineLimit(1)
-                                Text("@pnvanh")
-                                    .font(.system(size:20))
-                                    .lineLimit(1)
-                                Text("Đẹp trai thanh lịch vô địch vũ trụ")
-                                    .font(.system(size:20))
-                                    .lineLimit(1)
-                                HStack() {
-                                    
-                                }
+                                .padding(.top, 10)
                             }
 
                         }

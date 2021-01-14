@@ -18,7 +18,7 @@ struct LoginContent: View {
 
 struct LoginContent_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        LoginContent()
     }
 }
 struct MainView: View {
@@ -144,3 +144,8 @@ struct SignInView: View {
         
     }
 }
+//struct SignUpView: View {
+//    var body: some View {
+//        
+//    }
+//}

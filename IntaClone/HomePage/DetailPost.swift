@@ -15,7 +15,7 @@ struct DetailPost: View {
     var body: some View {
         ScrollView {
             VStack {
-                Image("post")
+                Image(dataDetail.postImage)
                 .resizable()
                     .frame(width: UIScreen.main.bounds.width, height: 550, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .overlay(InfoView(avatar: "\(dataDetail.avata)", username: "\(dataDetail.username)", place: "\(dataDetail.username)", countlike: "\(dataDetail.like)", caption: "\(dataDetail.caption)"), alignment: .leading)
@@ -58,7 +58,8 @@ struct DetailPost: View {
                     }.padding(.horizontal)
                 }
             }
-        }.navigationBarTitle("", displayMode: .inline)
+        }.navigationBarTitle("Detail", displayMode: .inline)
+        
     }
 }
 //struct DetailPost_Previews: PreviewProvider {
@@ -78,7 +79,7 @@ struct MultiLineText: UIViewRepresentable {
         view.isEditable = true
         view.isScrollEnabled = true
         view.font = .systemFont(ofSize: 18)
-        view.text = "Enter Comment"
+        view.text = "Write some thing"
         view.textColor = UIColor.gray.withAlphaComponent(0.3)
         view.backgroundColor = .clear
         view.delegate = context.coordinator

@@ -33,7 +33,7 @@ struct ActivityContent_Previews: PreviewProvider {
 struct Notification: View {
 //    @State var dataNoti: [DataNotification]
     var body: some View {
-        ScrollView{
+        ScrollView(showsIndicators: false){
             VStack(alignment: .leading) {
                 Text("Notification").bold().font(.system(size: 20))
                 ForEach(dataNoti) { item in

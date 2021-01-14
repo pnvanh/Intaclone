@@ -14,12 +14,12 @@ struct DiscoveryCardTag: View {
         GridItem(.flexible(minimum: 160, maximum: 180))
     ]
     var body: some View {
-        LazyVGrid(columns: girdTag, spacing: 16){
+        LazyVGrid(columns: girdTag){
             ForEach(dataCard){item in
                 VStack{
                     Image("\(item.image)").resizable()
                 }.cornerRadius(15)
-                .frame(width: UIScreen.main.bounds.width / 2 - 20, height: 200, alignment:.center)
+                .frame(width: UIScreen.main.bounds.width / 2 - 30, height: 200, alignment:.center)
             }
         }.padding(.horizontal, 15)
     }

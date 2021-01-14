@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct SearchList: View {
-    @Binding var text:String
+    @State var text:String
+    @State var nameTitle:String
     var body: some View {
         ScrollView{
             VStack{
+                SearchView(text: $text).padding(.bottom, 10)
                 ForEach(dataSearch.filter({ text.isEmpty || "\($0)".contains(text.lowercased())})) { item in
-                    HStack(alignment: .top){
+                    HStack(alignment: .center){
                         Image("\(item.image)")
                             .resizable()
                             .frame(width: 50, height: 50, alignment: .center)
@@ -30,18 +32,29 @@ struct SearchList: View {
                                 .lineLimit(1)
                         }
                         Spacer()
-                    }.padding(.horizontal, 15)
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Text("Following")
+                                .foregroundColor(.white)
+                                .font(.system(size: 16))
+                                .padding(.all, 5)
+                                .frame(width: 85)
+                        })
+                        .background(Color("Bluesky"))
+                        .cornerRadius(10)
+                    }.padding(.horizontal)
                 }
             }
-        }
+        }.padding(.top, 20)
+        .navigationBarTitle(self.nameTitle, displayMode: .inline)
+        .navigationTitle("")
     }
 }
 
-//struct SearchList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchList()
-//    }
-//}
+struct SearchList_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchList(text: "", nameTitle: "")
+    }
+}
 struct SearchData: Identifiable {
     var id = UUID()
     var image: String
@@ -55,3 +68,33 @@ var dataSearch = [
     SearchData(image: "avata", username: "vietchi", name: "codelang"),
     SearchData(image: "avata", username: "chiviet", name: "dmm")
 ]
+
+struct SearchView: View {
+    @Binding var text: String
+    @State private var isEditing = false
+    var body: some View {
+        HStack {
+            TextField("Search ...", text: $text)
+                .padding(7)
+                .padding(.horizontal, 25)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+                .padding(.horizontal, 10)
+                .onTapGesture {
+                    self.isEditing = true
+                }
+            if isEditing {
+                Button(action: {
+                    self.isEditing = false
+                    self.text = ""
+ 
+                }) {
+                    Text("Cancel")
+                }
+                .padding(.trailing, 10)
+                .transition(.move(edge: .trailing))
+                .animation(.default)
+            }
+        }
+    }
+}

@@ -34,6 +34,7 @@ struct PostCell: View {
             }
             .navigationBarHidden(true)
         }
+       
     }
       
 
@@ -210,8 +211,9 @@ struct Card : Identifiable, Hashable {
     var show: Bool
 }
 var data = [
-    Card(id: 0, avata: "avata", postImage: "post", username: "pnvanh", place: "Da Nang, Viet Nam", like: "1232", caption: "Chan mang doi nike low", show: false),
-    Card(id: 1, avata: "avata", postImage: "post2", username: "pnvanh", place: "Da Nang, Viet Nam", like: "122", caption: "Chan mang doi nike low2", show: false),
-    Card(id: 2, avata: "avata", postImage: "post3", username: "pnvanh", place: "Da Nang, Viet Nam", like: "12", caption: "Chan mang doi nike low3", show: false),
-    Card(id: 3, avata: "avata", postImage: "test", username: "pnvanh", place: "Da Nang, Viet Nam", like: "1232", caption: "Chan mang doi nike low4", show: false),
+    Card(id: 0, avata: "post", postImage: "post", username: "pnvanh", place: "Da Nang, Viet Nam", like: "1232", caption: "Chan mang doi nike low", show: false),
+    Card(id: 1, avata: "avata", postImage: "post2", username: "pnvchi", place: "Da Nang, Viet Nam", like: "122", caption: "Chan mang doi nike low2", show: false),
+    Card(id: 2, avata: "test", postImage: "post3", username: "pnvchih", place: "Da Nang, Viet Nam", like: "12", caption: "Chan mang doi nike low3", show: false),
+    Card(id: 3, avata: "post2", postImage: "test", username: "pnvem", place: "Da Nang, Viet Nam", like: "1232", caption: "Chan mang doi nike low4", show: false),
 ]
+

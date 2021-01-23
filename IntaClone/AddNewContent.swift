@@ -7,20 +7,9 @@
 
 import SwiftUI
 import Photos
-
-struct ContentView: View {
-    var body: some View {
-       
-        AddView()
-    }
-}
-
-struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddView()
-    }
-}
-
+import SDWebImageSwiftUI
+import FirebaseMLVisionObjectDetection
+import SwiftyJSON
 struct AddView : View {
     
     @State private var selected : [SelectedImages] = []
@@ -28,29 +17,49 @@ struct AddView : View {
     @Environment(\.presentationMode) var presentationMode
     @State private var caption:String = ""
     @State private var textHeight: CGFloat = 8
+    @Binding var showingModal:Bool
+    @State var userAvatar:String
+    @State var username:String
+    @State var fullName:String
     var body: some View{
+
         ZStack{
             VStack(alignment: .leading){
                 HStack(alignment: .center) {
-                    Image("avata")
+                    WebImage(url: URL(string: userAvatar))
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 50, height: 50, alignment: .center)
                     VStack(alignment: .leading) {
-                        Text("Phan Ngoc Viet Anh")
+                        Text("\(fullName)")
                             .font(.system(size: 18))
                             .lineLimit(1)
-                        Text("@pnvanh")
+                        Text("@\(username)")
                             .font(.system(size: 17))
                             .lineLimit(1)
                     }
                     Spacer()
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Button(action: {
+                        let b64:String = convertImageToBase64( image: selected[0].image)!
+                        getLable(imageData: selected[0].image)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { // Change `2.0` to the desired number of seconds.
+                           // Code you want to be delayed
+                            getLable(imageData: selected[0].image)
+                            detectionImage.forEach({item in
+                                detectionImageLable.append((item.tagsname))
+                            })
+                            
+                            NewPost(image: "data:image/jpeg;base64,\(b64)", caption: caption, hashtag: detectionImage[0].tagsname)
+                            self.showingModal = false
+                        }
+                        
+                    }, label: {
                         Text("Post")
                             .foregroundColor(.white)
                             .padding(.vertical,10)
                             .frame(width: 60)
                     })
+                    .disabled(caption.isEmpty)
                     .background(Color("Bluesky"))
                     .clipShape(Capsule())
                 }.padding(.horizontal)
@@ -66,7 +75,6 @@ struct AddView : View {
                                 .resizable()
                                 .frame(width: UIScreen.main.bounds.width - 40, height: 250)
                                     .cornerRadius(15)
-                                
                             }
                         }
                         .padding(.horizontal)
@@ -78,23 +86,23 @@ struct AddView : View {
                     .background(RoundedRectangle(cornerRadius: 15).stroke(Color("Gray"), lineWidth: 1))
                     .padding(.horizontal)
                 Spacer()
-//                Button(action: {
-//                    self.selected.removeAll()
-//                    self.show.toggle()
-//                }) {
-//                    Text("Image Picker")
-//                        .foregroundColor(.white)
-//                        .padding(.vertical,10)
-//                        .frame(width: UIScreen.main.bounds.width / 2)
-//                }
-//                .background(Color.red)
-//                .clipShape(Capsule())
-//                .padding(.top, 25)
             }
             .padding(.top, 25)
             if self.show{
                 CustomPicker(selected: self.$selected, show: self.$show)
             }
+        }
+        .onAppear{
+//            DispatchQueue.main.async {
+//                //Do UI Code here.
+//                //Call Google maps methods.
+////                getLable(imageData: selected[0].image)
+//                print("Lable: \(detectionImage)")
+//            }
+            
+        }
+        .onDisappear{
+           
         }
     }
 }
@@ -126,7 +134,7 @@ struct CustomPicker : View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         
-                        VStack(alignment: .center,spacing: 20){
+                        VStack(alignment: .center,spacing: 5){
                             
                             ForEach(self.grid,id: \.self){i in
                                 
@@ -143,7 +151,6 @@ struct CustomPicker : View {
                     }
                     
                     Button(action: {
-
                         self.show.toggle()
                     }) {
                         Text("Select")
@@ -367,3 +374,53 @@ struct MyView: View {
         }
     }
 }
+func convertImageToBase64(image: UIImage) -> String? {
+    let imageData = image.jpegData(compressionQuality: 0.1)
+    return imageData?.base64EncodedString(options:
+                                            .endLineWithCarriageReturn)
+}
+
+
+func getLable(imageData: UIImage) {
+    let categories = ["Unknown", "Home", "Fashion", "Food", "Places", "Plants"]
+    // Multiple object detection in static images
+    let options = VisionObjectDetectorOptions()
+    options.detectorMode = .singleImage
+    options.shouldEnableMultipleObjects = true
+    options.shouldEnableClassification = true  // Optional
+
+    let objectDetector = Vision.vision().objectDetector(options: options)
+    let image = VisionImage(image: imageData)
+
+    objectDetector.process(image) { detectedObjects, error in
+      guard error == nil else {
+        // Error.
+        return
+      }
+      guard let detectedObjects = detectedObjects, !detectedObjects.isEmpty else {
+        print("adasdasdasda")
+        // No objects detected.
+        return
+      }
+      // Success. Get object info here.
+      // ...
+        for obj in detectedObjects {
+
+            let category = obj.classificationCategory.rawValue
+          
+           
+//            print("\(categories[category])")
+//            detectionImageLable.append(categories[category])
+            detectionImage.append(LableName(tagsname: categories[category]))
+        }
+
+    }
+}
+//var vision = Vision.vision()
+struct LableName: Codable {
+    var tagsname:String
+}
+var detectionImage = [LableName]()
+var detectionImageLable:Array<String> = []
+
+var listTags:[AnyObject] = []

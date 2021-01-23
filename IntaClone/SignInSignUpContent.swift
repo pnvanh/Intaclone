@@ -7,13 +7,17 @@
 
 
 import SwiftUI
+import GoogleSignIn
+import Alamofire
+import SwiftyJSON
 
 struct SignInSignUpContent: View {
     var body: some View {
         
-        Home()
+        StartUpLogin()
             // for light status bar...
             .preferredColorScheme(.dark)
+        
     }
 }
 
@@ -23,7 +27,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct Home : View {
+struct StartUpLogin : View {
     
     @State var index = 0
     
@@ -77,7 +81,9 @@ struct Home : View {
                     }
                     
                     Button(action: {
+                        GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.first?.rootViewController
                         
+                        GIDSignIn.sharedInstance()?.signIn()
                     }) {
                         
                         Image("google-1")
@@ -137,7 +143,9 @@ struct Login : View {
     @State var email = ""
     @State var pass = ""
     @Binding var index : Int
-    
+    @State var showsAlert = false
+    @State var show = false
+    @State var textMessage = ""
     var body: some View{
         
         ZStack(alignment: .bottom) {
@@ -225,7 +233,14 @@ struct Login : View {
             // Button...
             
             Button(action: {
-                
+                if(self.email.isEmpty || self.pass.isEmpty) {
+                    self.showsAlert = true
+                    self.textMessage = "Username and password is not empty"
+                }
+                else{
+                    DoUserLogin(self.email, self.pass)
+                    self.show.toggle()
+                }
             }) {
                 
                 Text("LOGIN")
@@ -238,9 +253,13 @@ struct Login : View {
                     // shadow...
                     .shadow(color: Color.white.opacity(0.1), radius: 5, x: 0, y: 5)
             }
+            .alert(isPresented: self.$showsAlert) {
+                Alert(title: Text(self.textMessage))
+            }
             // moving view down..
             .offset(y: 25)
             .opacity(self.index == 0 ? 1 : 0)
+
         }
     }
 }

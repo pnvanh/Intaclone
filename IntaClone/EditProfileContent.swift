@@ -9,6 +9,11 @@ import SwiftUI
 
 struct EditProfileContent: View {
     @State var bio: String
+    @State var username: String
+    @State var fullName: String
+    @State var day: String
+    @State var month: String
+    @State var year: String
     @State var image: Image? = nil
     @State var showPicker = false
     var body: some View {
@@ -46,7 +51,7 @@ struct EditProfileContent: View {
                     HStack(spacing: 15){
                         Image(systemName: "person.fill")
                         .foregroundColor(Color("Bluesky"))
-                        TextField("Username", text: self.$bio)
+                        TextField("Username", text: self.$username)
                     }.padding(.horizontal, 10)
                     
                 }.padding(.vertical, 10)
@@ -55,9 +60,9 @@ struct EditProfileContent: View {
                 .padding(.horizontal)
                 VStack{
                     HStack(spacing: 15){
-                        Image(systemName: "pencil")
+                        Image(systemName: "person.fill")
                         .foregroundColor(Color("Bluesky"))
-                        TextField("Bio", text: self.$bio)
+                        TextField("Bio", text: self.$fullName)
                     }.padding(.horizontal, 10)
                     
                 }.padding(.vertical, 10)
@@ -66,7 +71,7 @@ struct EditProfileContent: View {
                 .padding(.horizontal)
                 VStack{
                     HStack(spacing: 15){
-                        Image(systemName: "location.fill")
+                        Image(systemName: "pencil ")
                         .foregroundColor(Color("Bluesky"))
                         TextField("Location", text: self.$bio)
                     }.padding(.horizontal, 10)
@@ -80,7 +85,7 @@ struct EditProfileContent: View {
                         HStack(spacing: 15){
                             Image(systemName: "calendar")
                             .foregroundColor(Color("Bluesky"))
-                            TextField("Day", text: self.$bio)
+                            TextField("Day", text: self.$day)
                         }.padding(.horizontal, 10)
                         
                     }.padding(.vertical, 10)
@@ -90,7 +95,7 @@ struct EditProfileContent: View {
                         HStack(spacing: 15){
                             Image(systemName: "calendar")
                             .foregroundColor(Color("Bluesky"))
-                            TextField("Month", text: self.$bio)
+                            TextField("Month", text: self.$month)
                         }.padding(.horizontal, 10)
                         
                     }.padding(.vertical, 10)
@@ -100,7 +105,7 @@ struct EditProfileContent: View {
                         HStack(spacing: 15){
                             Image(systemName: "calendar")
                             .foregroundColor(Color("Bluesky"))
-                            TextField("Year", text: self.$bio)
+                            TextField("Year", text: self.$year)
                         }.padding(.horizontal, 10)
                         
                     }.padding(.vertical, 10)
@@ -129,7 +134,7 @@ struct EditProfileContent: View {
 
 struct EditProfileContent_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileContent(bio: "")
+        EditProfileContent(bio: "", username: "", fullName: "", day: "", month: "", year: "")
     }
 }
 struct LineView: UIViewRepresentable {

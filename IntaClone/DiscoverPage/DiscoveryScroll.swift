@@ -6,25 +6,18 @@
 //
 
 import SwiftUI
-
-var dataArray:Array<CardDiscovery> = [CardDiscovery(id: 0, image: "post")]
-
-//struct DiscoverySubView: View {
-//    var body: some View {
-//        ScrollView(.vertical, showsIndicators: false, content: {
-//            DiscoveryScroll()
-//        })
-//    }
-//}
-
+import WaterfallGrid
+import SDWebImageSwiftUI
 struct DiscoveryScroll: View {
     @State var tagSelected = 0
+    @ObservedObject var TagDiscoverOBS = LoadTagDiscover()
     let tags = [
-        TagDiscovery(id: 0, name: "Travel", image: "airplane", color: "Bluesky"),
-        TagDiscovery(id: 1, name: "Style", image: "camera", color: "purple"),
-        TagDiscovery(id: 2, name: "Shopping", image: "shopping", color: "Yellow"),
-        TagDiscovery(id: 3, name: "Style", image: "camera", color: "purple"),
-        TagDiscovery(id: 4, name: "Shopping", image: "shopping", color: "Bluesky")
+        TagDiscovery(id: 0, name: "Popular", image: "favorite", color: "Like"),
+        TagDiscovery(id: 1, name: "Places", image: "airplane", color: "Bluesky"),
+        TagDiscovery(id: 2, name: "Fashion", image: "shopping", color: "purple"),
+        TagDiscovery(id: 3, name: "Food", image: "food", color: "Yellow"),
+        TagDiscovery(id: 4, name: "Plants", image: "spa", color: "green"),
+        TagDiscovery(id: 5, name: "Home", image: "home", color: "Color1")
     ]
     var body: some View {
         ScrollView(.vertical,showsIndicators: false){
@@ -52,11 +45,101 @@ struct DiscoveryScroll: View {
                     }.padding(.horizontal)
                 }
             }
-            TabView(selection: self.$tagSelected){
-                DiscoveryCardTag(dataCard: dataCard).tag(0)
-                DiscoveryCardTag(dataCard: dataCard1).tag(1)
-                DiscoveryCardTag(dataCard: dataCard2).tag(2)
-            }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)).disabled(true)
+            if(tagSelected == 0) {
+                VStack {
+                    WaterfallGrid(TagDiscoverOBS.loadPopular, id: \.self){ item in
+                        NavigationLink(destination: DetailPost(dataDetail: item)) {
+                            WebImage(url: URL(string: item.postImage))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                        }
+                    }
+                    .gridStyle(columns: 2)
+                    .padding(.horizontal)
+                }
+                .onAppear{
+                    TagDiscoverOBS.loadPopular(name: "Popular")
+                    TagDiscoverOBS.loadPopular.removeAll()
+                }
+            }
+            else if (tagSelected == 1) {
+                VStack {
+                    WaterfallGrid(dataPlaces, id: \.self){ item in
+                        NavigationLink(destination: DetailPost(dataDetail: item)) {
+                            WebImage(url: URL(string: item.postImage))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                        }
+                    }
+                    .gridStyle(columns: 2)
+                    .padding(.horizontal)
+                }
+            }
+            else if (tagSelected == 2) {
+                VStack {
+                    WaterfallGrid(dataFashion, id: \.self){ item in
+                        NavigationLink(destination: DetailPost(dataDetail: item)) {
+                            WebImage(url: URL(string: item.postImage))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                        }
+                    }
+                    .gridStyle(columns: 2)
+                    .padding(.horizontal)
+                }
+            }
+
+            else if (tagSelected == 3) {
+                VStack {
+                    WaterfallGrid(dataFood, id: \.self){ item in
+                        NavigationLink(destination: DetailPost(dataDetail: item)) {
+                            WebImage(url: URL(string: item.postImage))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                        }
+                    }
+                    .gridStyle(columns: 2)
+                    .padding(.horizontal)
+                }
+            }
+
+            else if (tagSelected == 4) {
+                VStack {
+                    WaterfallGrid(dataPlants, id: \.self){ item in
+                        NavigationLink(destination: DetailPost(dataDetail: item)) {
+                            WebImage(url: URL(string: item.postImage))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                        }
+                    }
+                    .gridStyle(columns: 2)
+                    .padding(.horizontal)
+                }
+            }
+            else if (tagSelected == 5) {
+                VStack {
+                    WaterfallGrid(dataHome, id: \.self){ item in
+                        NavigationLink(destination: DetailPost(dataDetail: item)) {
+                            WebImage(url: URL(string: item.postImage))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                        }
+                    }
+                    .gridStyle(columns: 2)
+                    .padding(.horizontal)
+                }
+            }
+
+
+            
+
+            
         }
     }
 
@@ -69,22 +152,3 @@ struct DiscoveryScroll: View {
 //        DiscoverySubView()
 //    }
 //}
-var dataCard = [
-    CardDiscovery(id: 0, image: "post"),
-    CardDiscovery(id: 1, image: "post3"),
-    CardDiscovery(id: 2, image: "post2"),
-    CardDiscovery(id: 3, image: "bg"),
-    CardDiscovery(id: 4, image: "test")
-]
-var dataCard1 = [
-    CardDiscovery(id: 0, image: "post"),
-    CardDiscovery(id: 1, image: "post3"),
-    CardDiscovery(id: 2, image: "post2")
-]
-var dataCard2 = [
-    CardDiscovery(id: 0, image: "post2"),
-    CardDiscovery(id: 1, image: "post3"),
-    CardDiscovery(id: 2, image: "post"),
-    CardDiscovery(id: 3, image: "bg"),
-    CardDiscovery(id: 4, image: "avata")
-]

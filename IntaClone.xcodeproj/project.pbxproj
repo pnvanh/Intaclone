@@ -3,11 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240513F225BBE5B50030A488 /* TestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240513F125BBE5B50030A488 /* TestFile.swift */; };
+		240EDD8B25B85B320098116E /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 240EDD8A25B85B320098116E /* SimpleToast */; };
+		241443E625BAF94800EBCBE7 /* ProfileUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241443E525BAF94800EBCBE7 /* ProfileUser.swift */; };
+		241AE77E25B95C0B001CB7AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 241AE77D25B95C0B001CB7AE /* GoogleService-Info.plist */; };
+		241AE78125B960AF001CB7AE /* CheckLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241AE78025B960AF001CB7AE /* CheckLable.swift */; };
+		243E5E2025B7EC39007282C3 /* SearchUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243E5E1F25B7EC39007282C3 /* SearchUser.swift */; };
 		246AB42D25AD3E41002DB24E /* SignInSignUpContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246AB42C25AD3E41002DB24E /* SignInSignUpContent.swift */; };
+		24A3F8D925B14B9A006053EE /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3F8D825B14B9A006053EE /* LoginModel.swift */; };
+		24A3F91625B16B48006053EE /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A3F91525B16B48006053EE /* AuthUser.swift */; };
+		24DCFAD425B2BFEC0043CC7A /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCFAD325B2BFEC0043CC7A /* Feed.swift */; };
+		24DCFAEB25B2E50D0043CC7A /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCFAEA25B2E50D0043CC7A /* MainContentView.swift */; };
 		24EABAAC25AFB2000084BBE0 /* EditProfileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EABAAB25AFB2000084BBE0 /* EditProfileContent.swift */; };
 		24EABAAF25AFC5700084BBE0 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EABAAE25AFC5700084BBE0 /* ImagePicker.swift */; };
 		566BF9032594BFF3001EB646 /* DiscoveryScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BF8FC2594BFF2001EB646 /* DiscoveryScroll.swift */; };
@@ -35,7 +45,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		240513F125BBE5B50030A488 /* TestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFile.swift; sourceTree = "<group>"; };
+		241443E525BAF94800EBCBE7 /* ProfileUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUser.swift; sourceTree = "<group>"; };
+		241AE77D25B95C0B001CB7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		241AE78025B960AF001CB7AE /* CheckLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckLable.swift; sourceTree = "<group>"; };
+		243E5E1F25B7EC39007282C3 /* SearchUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUser.swift; sourceTree = "<group>"; };
 		246AB42C25AD3E41002DB24E /* SignInSignUpContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInSignUpContent.swift; sourceTree = "<group>"; };
+		24A3F8D825B14B9A006053EE /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		24A3F91525B16B48006053EE /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
+		24DCFAD325B2BFEC0043CC7A /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		24DCFAEA25B2E50D0043CC7A /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		24EABAAB25AFB2000084BBE0 /* EditProfileContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileContent.swift; sourceTree = "<group>"; };
 		24EABAAE25AFC5700084BBE0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		566BF8FC2594BFF2001EB646 /* DiscoveryScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryScroll.swift; sourceTree = "<group>"; };
@@ -71,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				240EDD8B25B85B320098116E /* SimpleToast in Frameworks */,
 				72A5D357F4658D390A0D510F /* Pods_IntaClone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24A3F8D725B14B8B006053EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				24A3F8D825B14B9A006053EE /* LoginModel.swift */,
+				24DCFAD325B2BFEC0043CC7A /* Feed.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		566BF90E2594C034001EB646 /* DiscoverPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +116,8 @@
 				566BF8FC2594BFF2001EB646 /* DiscoveryScroll.swift */,
 				566BF8FF2594BFF3001EB646 /* SearchBar.swift */,
 				566BF9002594BFF3001EB646 /* SearchList.swift */,
+				243E5E1F25B7EC39007282C3 /* SearchUser.swift */,
+				240513F125BBE5B50030A488 /* TestFile.swift */,
 			);
 			path = DiscoverPage;
 			sourceTree = "<group>";
@@ -120,6 +151,8 @@
 		56F3CE182594B3AE004CBD64 /* IntaClone */ = {
 			isa = PBXGroup;
 			children = (
+				241AE77D25B95C0B001CB7AE /* GoogleService-Info.plist */,
+				24A3F8D725B14B8B006053EE /* Model */,
 				566BF91E2594C0C6001EB646 /* TabBar.swift */,
 				566BF91B2594C0B7001EB646 /* LoginContent.swift */,
 				566BF9182594C0AC001EB646 /* AddNewContent.swift */,
@@ -137,6 +170,10 @@
 				246AB42C25AD3E41002DB24E /* SignInSignUpContent.swift */,
 				24EABAAB25AFB2000084BBE0 /* EditProfileContent.swift */,
 				24EABAAE25AFC5700084BBE0 /* ImagePicker.swift */,
+				24A3F91525B16B48006053EE /* AuthUser.swift */,
+				24DCFAEA25B2E50D0043CC7A /* MainContentView.swift */,
+				241AE78025B960AF001CB7AE /* CheckLable.swift */,
+				241443E525BAF94800EBCBE7 /* ProfileUser.swift */,
 			);
 			path = IntaClone;
 			sourceTree = "<group>";
@@ -174,7 +211,6 @@
 				5BF242624774774716C7530F /* Pods-IntaClone.debug.xcconfig */,
 				E7FF99BC9B879266832CD45A /* Pods-IntaClone.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -197,6 +233,9 @@
 			dependencies = (
 			);
 			name = IntaClone;
+			packageProductDependencies = (
+				240EDD8A25B85B320098116E /* SimpleToast */,
+			);
 			productName = IntaClone;
 			productReference = 56F3CE162594B3AE004CBD64 /* IntaClone.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +263,9 @@
 				Base,
 			);
 			mainGroup = 56F3CE0D2594B3AE004CBD64;
+			packageReferences = (
+				240EDD8925B85B320098116E /* XCRemoteSwiftPackageReference "SimpleToast" */,
+			);
 			productRefGroup = 56F3CE172594B3AE004CBD64 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -240,6 +282,7 @@
 			files = (
 				566BF9282594C1AA001EB646 /* Lobster-Regular.ttf in Resources */,
 				56F3CE262594B3B0004CBD64 /* LaunchScreen.storyboard in Resources */,
+				241AE77E25B95C0B001CB7AE /* GoogleService-Info.plist in Resources */,
 				56F3CE232594B3B0004CBD64 /* Preview Assets.xcassets in Resources */,
 				56F3CE202594B3B0004CBD64 /* Assets.xcassets in Resources */,
 			);
@@ -314,21 +357,29 @@
 				566BF9162594C0A0001EB646 /* ProfileContent.swift in Sources */,
 				56F3CE512594B6FE004CBD64 /* DetailPost.swift in Sources */,
 				56F3CE502594B6FE004CBD64 /* StoryView.swift in Sources */,
+				24A3F8D925B14B9A006053EE /* LoginModel.swift in Sources */,
 				566BF9132594C090001EB646 /* ActivityContent.swift in Sources */,
 				56F3CE1A2594B3AE004CBD64 /* AppDelegate.swift in Sources */,
 				56F3CE542594B6FE004CBD64 /* StoryCell.swift in Sources */,
 				566BF9062594BFF3001EB646 /* SearchBar.swift in Sources */,
+				243E5E2025B7EC39007282C3 /* SearchUser.swift in Sources */,
 				566BF9092594BFF3001EB646 /* DataDiscovery.swift in Sources */,
 				566BF91F2594C0C6001EB646 /* TabBar.swift in Sources */,
 				566BF9032594BFF3001EB646 /* DiscoveryScroll.swift in Sources */,
+				24DCFAEB25B2E50D0043CC7A /* MainContentView.swift in Sources */,
 				566BF9072594BFF3001EB646 /* SearchList.swift in Sources */,
 				566BF9082594BFF3001EB646 /* DiscoveryCardTag.swift in Sources */,
 				566BF9192594C0AC001EB646 /* AddNewContent.swift in Sources */,
+				241443E625BAF94800EBCBE7 /* ProfileUser.swift in Sources */,
+				240513F225BBE5B50030A488 /* TestFile.swift in Sources */,
+				24A3F91625B16B48006053EE /* AuthUser.swift in Sources */,
 				566BF9042594BFF3001EB646 /* DiscoveryContent.swift in Sources */,
 				566BF91C2594C0B7001EB646 /* LoginContent.swift in Sources */,
 				246AB42D25AD3E41002DB24E /* SignInSignUpContent.swift in Sources */,
 				56F3CE1C2594B3AE004CBD64 /* SceneDelegate.swift in Sources */,
+				241AE78125B960AF001CB7AE /* CheckLable.swift in Sources */,
 				24EABAAF25AFC5700084BBE0 /* ImagePicker.swift in Sources */,
+				24DCFAD425B2BFEC0043CC7A /* Feed.swift in Sources */,
 				56F3CE532594B6FE004CBD64 /* PostCell.swift in Sources */,
 				24EABAAC25AFB2000084BBE0 /* EditProfileContent.swift in Sources */,
 			);
@@ -532,6 +583,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		240EDD8925B85B320098116E /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanzaru/SimpleToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		240EDD8A25B85B320098116E /* SimpleToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 240EDD8925B85B320098116E /* XCRemoteSwiftPackageReference "SimpleToast" */;
+			productName = SimpleToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 56F3CE0E2594B3AE004CBD64 /* Project object */;
 }

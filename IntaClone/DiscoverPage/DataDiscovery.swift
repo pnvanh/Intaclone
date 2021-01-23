@@ -13,7 +13,7 @@ struct TagDiscovery: Hashable {
     var image: String
     var color: String
 }
-struct CardDiscovery: Identifiable {
+struct CardDiscovery: Identifiable, Hashable, Codable {
     var id: Int
     var image: String
 }

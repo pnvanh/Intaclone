@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
-
+import GoogleSignIn
+import Alamofire
+import SwiftyJSON
+import SDWebImageSwiftUI
+import ToastUI
+import SimpleToast
 struct PostCell: View {
- 
+    @ObservedObject var NewFeedOBS = NewFeed()
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         NavigationView {
             VStack {
@@ -21,12 +28,13 @@ struct PostCell: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         StoryCell()
-                        ForEach(data) { item in
+//                        NewFeedOBS.dataNewFeedFeed
+                        ForEach(NewFeedOBS.dataNewFeedFeed) { item in
                             NavigationLink(destination: DetailPost(dataDetail: item)) {
-                                Image("\(item.postImage)")
+                                WebImage(url: URL(string: item.postImage))
                                 .resizable()
                                 .frame(width: UIScreen.main.bounds.width - 30, height: 450, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                    .overlay(InfoView(avatar: item.avata, username: item.username, place: item.place, countlike: item.like, caption: item.caption), alignment: .leading).cornerRadius(15).padding(.top, 10)
+                                    .overlay(InfoView(idOfPost: item.id, avatar: item.avata, username: item.username, place: item.place, countlike: (item.like), caption: item.caption , isLike: item.userLike), alignment: .leading).cornerRadius(15).padding(.top, 10)
                             }.navigationBarTitle("Home")
                         }
                     }
@@ -34,7 +42,14 @@ struct PostCell: View {
             }
             .navigationBarHidden(true)
         }
-       
+        .onAppear{
+            NewFeedOBS.loadRecomment()
+            NewFeedOBS.dataNewFeedFeed.removeAll()
+            NewFeedOBS.reloadData()
+        }
+        .onDisappear{
+            
+        }
     }
       
 
@@ -123,17 +138,30 @@ struct PostCell_Previews: PreviewProvider {
 //    }
 //}
 
-//MARK:INFOVIEW
+//MARK:INFOVIEW  
 struct InfoView: View {
+    @State var idOfPost: Int
     @State var avatar: String
     @State var username: String
     @State var place: String
-    @State var countlike: String
+    @State var countlike: Int
     @State var caption: String
+    @State var isLike:Bool
+    @State var showActionSheet = false
+    @State var showToast = false
+    @State var showToastSelf = false
+    
+    private let toastOptions = SimpleToastOptions(
+        alignment: .center ,
+        hideAfter: 1.0,
+        backdrop: true,
+        backdropColor: Color.black.opacity(0.2),
+        animation: .linear,
+        modifierType: .fade)
     var body: some View {
         VStack{
-            HStack(alignment: .top){
-                Image("\(avatar)")
+            HStack(alignment: .center){
+                WebImage(url: URL(string: avatar))
                     .resizable()
                     .frame(width: 50, height: 50, alignment: .center)
                     .clipShape(Circle())
@@ -152,11 +180,53 @@ struct InfoView: View {
                 }
                 Spacer()
                 //co the bo button vao day
+                Button(action: {
+                    let user = UserDefaults.standard
+                    user.synchronize()
+                    guard let userPostCheck = user.string(forKey: "username") else {return}
+                    if username != userPostCheck {
+                        self.showActionSheet.toggle()
+                    }
+                    else{
+                        self.showToastSelf.toggle()
+                    }
+                }) {
+                    Image(systemName: "ellipsis")
+                        .frame(width: 26, height: 26, alignment: .top)
+                        .foregroundColor(.white)
+                }
+                .actionSheet(isPresented: $showActionSheet) {
+                    ActionSheet(title: Text("Report"), message: Text("Report this post"), buttons: [
+                        .default(Text("Nudity or sexual activity"), action: {
+                            reportPost(idPost: idOfPost, titleReport: "Nudity_or_sexual_activity")
+                            self.showToast.toggle()
+                        }),
+                        .default(Text("Spam"), action: {
+                            reportPost(idPost: idOfPost, titleReport: "Spam")
+                            self.showToast.toggle()
+                        }),
+                        .default(Text("Inappropriate language"), action: {
+                            reportPost(idPost: idOfPost, titleReport: "Inappropriate_Language")
+                            self.showToast.toggle()
+                        }),
+                        .cancel()
+                    ])
+                }
+                
             }.padding(.all, 10)
             Spacer()
             ZStack{
                 HStack{
-                    Button(action: {}) {
+                    Button(action: {
+                        self.isLike.toggle()
+                        isLikePost(id: idOfPost)
+                        if !isLike {
+                            self.countlike = countlike - 1
+                        }
+                        else {
+                            self.countlike = countlike + 1
+                        }
+                    }) {
                         HStack {
                             Image("favorite")
                                 .resizable()
@@ -168,7 +238,7 @@ struct InfoView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                         .padding(.all, 5)
-                        .background(Color("Like"))
+                        .background(isLike ? Color("Like") : Color.gray)
                         .cornerRadius(50)
                     }
                     Text("\(caption)")
@@ -181,39 +251,61 @@ struct InfoView: View {
                 }
             }.padding(.all, 10)
         }
+        .simpleToast(isShowing: $showToast, options: toastOptions, completion: onToastComplete) {
+            HStack {
+                Image(systemName: "checkmark.circle.fill")
+                Text("This is post has been report !")
+            }
+            .padding()
+            .background(Color.green.opacity(0.8))
+            .foregroundColor(Color.white)
+            .cornerRadius(10)
+        }
+        .simpleToast(isShowing: $showToastSelf, options: toastOptions, completion: onToastComplete) {
+            HStack {
+                Image(systemName: "exclamationmark.triangle")
+                Text("You can not report yourself !")
+            }
+            .padding()
+            .background(Color.yellow.opacity(0.8))
+            .foregroundColor(Color.white)
+            .cornerRadius(10)
+        }
+
     }
-}
-//struct CardView : View {
+    
+//    var actionSheet: ActionSheet {
+//        ActionSheet(title: Text("Report"), message: Text("Report this post"), buttons: [
+//            .default(Text("Nudity or sexual activity"), action: {
 //
-//    var data : Card
-//
-//    var body : some View{
-//
-//        VStack(alignment: .leading, spacing: 0){
-//
-//            Image(data.post)
-//            .resizable()
-//                .overlay(InfoView(), alignment: .leading)
-//        }
-//        .frame(width: UIScreen.main.bounds.width - 30, height: data.show ? 450 : 400)
-//        .background(Color.white)
-//        .cornerRadius(25)
+//            }),
+//            .default(Text("Racism"), action: {
+//                print("racism")
+//            }),
+//            .default(Text("Spam"), action: {
+//                print("Spam")
+//            }),
+//            .default(Text("Verbal insults"), action: {
+//                print("")
+//            }),
+//            .cancel()
+//        ])
 //    }
-//}
+    // This will be called on toast completion
+        func onToastComplete() -> Void {
+            print("The toast did disappear")
+        }
+}
+
 struct Card : Identifiable, Hashable {
     var id: Int
     var avata: String
     var postImage: String
     var username: String
     var place: String
-    var like: String
+    var like: Int
     var caption: String
     var show: Bool
+    var userLike: Bool
 }
-var data = [
-    Card(id: 0, avata: "post", postImage: "post", username: "pnvanh", place: "Da Nang, Viet Nam", like: "1232", caption: "Chan mang doi nike low", show: false),
-    Card(id: 1, avata: "avata", postImage: "post2", username: "pnvchi", place: "Da Nang, Viet Nam", like: "122", caption: "Chan mang doi nike low2", show: false),
-    Card(id: 2, avata: "test", postImage: "post3", username: "pnvchih", place: "Da Nang, Viet Nam", like: "12", caption: "Chan mang doi nike low3", show: false),
-    Card(id: 3, avata: "post2", postImage: "test", username: "pnvem", place: "Da Nang, Viet Nam", like: "1232", caption: "Chan mang doi nike low4", show: false),
-]
 

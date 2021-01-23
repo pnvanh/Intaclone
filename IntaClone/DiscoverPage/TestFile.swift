@@ -34,11 +34,11 @@ struct TestFile_Previews: PreviewProvider {
 }
 var dataPlaces = [
     Card(id: 0, avata: "post", postImage: "https://static.toiimg.com/photo/72975551.cms", username: "post", place: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHw%3D&w=1000&q=80", like: 1, caption: "fad", show: false, userLike: false),
-    Card(id: 1, avata: "post", postImage: "https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZGF3bnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80", username: "post", place: "post", like: 1, caption: "fad", show: false, userLike: false),
+    Card(id: 1, avata: "post", postImage: "https://d3jyiu4jpn0ihr.cloudfront.net/wp-content/uploads/sites/6/20190912103855/ve-may-bay-buon-ma-thuot-ha-noi.jpg", username: "post", place: "post", like: 1, caption: "fad", show: false, userLike: false),
     Card(id: 2, avata: "post", postImage: "https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZGF3bnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80", username: "post", place: "post", like: 1, caption: "fad", show: false, userLike: false),
-    Card(id: 3, avata: "post", postImage: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHw%3D&w=1000&q=80", username: "post", place: "post", like: 1, caption: "fad", show: false, userLike: false),
+    Card(id: 3, avata: "post", postImage: "https://cdn.printgo.vn/uploads/media/774255/dia-diem-di-choi-30-4-ha-noi_1587472232.jpg", username: "post", place: "post", like: 1, caption: "fad", show: false, userLike: false),
     Card(id: 4, avata: "post", postImage: "https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZGF3bnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80", username: "post", place: "post", like: 1, caption: "fd", show: false, userLike: false),
-    Card(id: 5, avata: "post", postImage: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHw%3D&w=1000&q=80", username: "post", place: "post", like: 1, caption: "fad", show: false, userLike: false),
+    Card(id: 5, avata: "post", postImage: "https://i.vietgiaitri.com/2018/10/28/di-qua-song-gio-de-tim-thay-binh-yen-304d05.jpg", username: "post", place: "post", like: 1, caption: "fad", show: false, userLike: false),
 ]
 
 var dataPlants = [

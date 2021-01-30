@@ -6,7 +6,6 @@ Trên đây là mã nguồn của phần mobile được viết bằng SwiftUI.
 iOS 14+
 pod 1.10.1
 XCode 12.3
-iPhone7 plus trở lên
 Một số framework khuyên dùng
 ->pod 'GoogleSignIn'
 ->pod 'Alamofire', '~> 5.2'
@@ -23,4 +22,13 @@ cd Intaclone
 pod init
 pod install
 Sử dụng IntaClone.xcworkspace bằng Xcode và build ứng dụng.
-5. Một số hình ảnh và video của ứng dụng.
+5. Website: http://congchuabuoito.southeastasia.cloudapp.azure.com:6969
+6. Một số hình ảnh và video của ứng dụng.
+
+
+
+
+
+
+
+

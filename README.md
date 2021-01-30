@@ -25,9 +25,10 @@ Sử dụng IntaClone.xcworkspace bằng Xcode và build ứng dụng.
 5. Website: http://congchuabuoito.southeastasia.cloudapp.azure.com:6969
 6. Một số hình ảnh và video của ứng dụng.
 
-[![Watch the video](https://img.youtube.com/vi/PfQuw59PrM0/default.jpg)](https://youtu.be/PfQuw59PrM0)
+https://drive.google.com/drive/folders/12lX9ZJdV8bP2JSTYFCc17tBdLd5vur6g?usp=sharing
 
 [![Watch the video](https://img.youtube.com/vi/PfQuw59PrM0/default.jpg)](https://youtu.be/PfQuw59PrM0)
+
 [![Watch the video](https://img.youtube.com/vi/PfQuw59PrM0/default.jpg)](https://youtu.be/PfQuw59PrM0)
 
 

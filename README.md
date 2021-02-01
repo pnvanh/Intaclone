@@ -33,7 +33,7 @@ Sử dụng IntaClone.xcworkspace bằng Xcode và build ứng dụng.
 
 https://drive.google.com/drive/folders/12lX9ZJdV8bP2JSTYFCc17tBdLd5vur6g?usp=sharing
 
-![myimage-alt-tag](https://ibb.co/5GG8Z39)
 
+<img src="https://ibb.co/5GG8Z39" alt="My cool logo"/>
 
 

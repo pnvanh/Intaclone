@@ -14,7 +14,10 @@ pod init
 pod install
 Sử dụng IntaClone.xcworkspace bằng Xcode và build ứng dụng.
 5. Website: http://congchuabuoito.southeastasia.cloudapp.azure.com:6969
-6. Một số hình ảnh và video của ứng dụng
+6. Github website và admin pannel:
+Website: https://github.com/huynhduc0/web-instagram-clone
+Admin: https://github.com/huynhduc0/admin-instafake
+7. Một số hình ảnh và video của ứng dụng
 Xem thêm:https://drive.google.com/drive/folders/12lX9ZJdV8bP2JSTYFCc17tBdLd5vur6g?usp=sharing
 <img src="https://i.ibb.co/Bw22rNV/Home-page.png" width="400" height="790">
 <img src="https://i.ibb.co/yYxL2Rz/Discover-page.png" width="400" height="790">

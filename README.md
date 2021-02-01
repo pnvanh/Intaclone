@@ -36,4 +36,4 @@ https://drive.google.com/drive/folders/12lX9ZJdV8bP2JSTYFCc17tBdLd5vur6g?usp=sha
 
 ![Alt text](https://i.ibb.co/zQQRdg5/Activity-Notification.png =250x250 "Optional title" )
 
-
+<img src="https://i.ibb.co/zQQRdg5/Activity-Notification.png" width="400" height="790">

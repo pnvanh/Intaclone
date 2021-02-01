@@ -30,9 +30,9 @@ Admin: https://github.com/huynhduc0/admin-instafake
 7. Một số hình ảnh và video của ứng dụng
 
 Xem thêm:https://drive.google.com/drive/folders/12lX9ZJdV8bP2JSTYFCc17tBdLd5vur6g?usp=sharing
-
+Video:
 [![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/TumZtxnNKvI)
-
+Hình ảnh khác:
 <img src="https://i.ibb.co/Bw22rNV/Home-page.png" width="400" height="790">
 <img src="https://i.ibb.co/yYxL2Rz/Discover-page.png" width="400" height="790">
 <img src="https://i.ibb.co/zQQRdg5/Activity-Notification.png" width="400" height="790">

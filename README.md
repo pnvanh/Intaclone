@@ -14,11 +14,11 @@ XCode 12.3
 
 4. Sử dụng:
 
-git clone https://github.com/pnvanh/Intaclone.git
-cd Intaclone
-pod init
-pod install
-Sử dụng IntaClone.xcworkspace bằng Xcode và build ứng dụng.
+~ git clone https://github.com/pnvanh/Intaclone.git
+~ cd Intaclone
+~ pod init
+~ pod install
+~ Sử dụng IntaClone.xcworkspace bằng Xcode và build ứng dụng.
 
 5. Website: http://congchuabuoito.southeastasia.cloudapp.azure.com:6969
 6. Github website và admin pannel:

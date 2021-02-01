@@ -31,9 +31,12 @@ Sử dụng IntaClone.xcworkspace bằng Xcode và build ứng dụng.
 
 6. Một số hình ảnh và video của ứng dụng
 
-https://drive.google.com/drive/folders/12lX9ZJdV8bP2JSTYFCc17tBdLd5vur6g?usp=sharing
-
-
-![Alt text](https://i.ibb.co/zQQRdg5/Activity-Notification.png =250x250 "Optional title" )
-
+Xem thêm:https://drive.google.com/drive/folders/12lX9ZJdV8bP2JSTYFCc17tBdLd5vur6g?usp=sharing
+<img src="https://i.ibb.co/Bw22rNV/Home-page.png" width="400" height="790">
+<img src="https://i.ibb.co/yYxL2Rz/Discover-page.png" width="400" height="790">
 <img src="https://i.ibb.co/zQQRdg5/Activity-Notification.png" width="400" height="790">
+<img src="https://i.ibb.co/hs9Zsfn/Report-success.png" width="400" height="790">
+<img src="https://i.ibb.co/K5VfJ3j/Album-in-Profile.png" width="400" height="790">
+<img src="https://i.ibb.co/P9nXsdh/Detai-post.png" width="400" height="790">
+<img src="https://i.ibb.co/NS21thr/Profile-page.png" width="400" height="790">
+
